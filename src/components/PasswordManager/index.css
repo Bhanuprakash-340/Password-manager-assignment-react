@@ -1,5 +1,5 @@
 .app-container {
-  background-color: #9ba9eb;
+  background-image: linear-gradient(#9ba9eb, #c3caea);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,6 +51,12 @@
   align-items: center;
 }
 
+@media screen and (min-width: 768px) {
+  .login-image-container {
+    order: 2;
+  }
+}
+
 .login-page-image {
   width: 70%;
   margin: 0px;
@@ -63,6 +69,12 @@
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    order: 1;
+  }
 }
 
 .form-container {
@@ -244,4 +256,14 @@
   color: #ffffff;
   font-family: 'Roboto';
   font-weight: 500;
+}
+
+.passwords-lists-container {
+  width: 100%;
+  margin-left: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
