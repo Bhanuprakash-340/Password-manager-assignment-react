@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   min-height: 100vh;
   padding: 10px;
 }
@@ -14,6 +14,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 5px;
+}
+
+.logo-container-a {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .logo-container-a {
+    width: 80%;
+  }
 }
 
 .logo-container {
@@ -21,6 +32,7 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .extra-container {
@@ -29,6 +41,12 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+@media screen and (min-width: 767px) {
+  .extra-container {
+    width: 80%;
+  }
 }
 
 .logo-image {
@@ -42,8 +60,14 @@
   width: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .users-input-container {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 .login-image-container {
-  /* border: 3px solid green; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -54,6 +78,7 @@
 @media screen and (min-width: 768px) {
   .login-image-container {
     order: 2;
+    width: 50%;
   }
 }
 
@@ -74,6 +99,7 @@
 @media screen and (min-width: 768px) {
   .form {
     order: 1;
+    width: 50%;
   }
 }
 
@@ -159,7 +185,7 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .password-search-container {
@@ -192,7 +218,6 @@
 
 .password-count {
   color: #ffffff;
-  border: 1px solid white;
   font-weight: 600;
   font-size: 10px;
   padding-top: 1px;
@@ -201,6 +226,7 @@
   padding-right: 10px;
   border-radius: 15px;
   margin-right: 0px;
+  border: 1px solid #ffffff;
 }
 
 .search-bar-container {
@@ -218,8 +244,6 @@
   padding-bottom: 3px;
   padding-left: 7px;
   padding-right: 7px;
-  /* border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px; */
   border-right: 1px solid gray;
 }
 
@@ -236,7 +260,6 @@
 }
 
 .check-box-container {
-  /* border: 1px solid red; */
   width: 90%;
   display: flex;
   flex-direction: row;
@@ -266,4 +289,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .passwords-lists-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 90%;
+  }
+}
+
+.no-password-image-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .no-password-image-container {
+    width: 50%;
+  }
 }

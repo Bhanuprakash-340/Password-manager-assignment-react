@@ -23,13 +23,19 @@ class PasswordManager extends Component {
     userName: '',
     userPassword: '',
     searchInput: '',
+    // isTrue: false,
     isCheckBoxClicked: false,
   }
 
-  onCheckBox = () => {
-    const {isCheckBoxClicked} = this.state
+  onCheckBox = event => {
+    if (event.target.checked) {
+      this.setState({isCheckBoxClicked: true})
+    } else {
+      this.setState({isCheckBoxClicked: false})
+    }
+    // const {isCheckBoxClicked} = this.state
 
-    this.setState({isCheckBoxClicked: !isCheckBoxClicked})
+    // this.setState({isCheckBoxClicked: !isCheckBoxClicked})
   }
 
   onChangeSearchInput = event => {
@@ -37,11 +43,11 @@ class PasswordManager extends Component {
     this.setState({searchInput: event.target.value})
   }
 
-  deletePassword = id => {
+  deletePassword = passwordId => {
     const {passwordsList} = this.state
 
     const updatedPasswordsList = passwordsList.filter(
-      eachPassword => id !== eachPassword.id,
+      eachPassword => eachPassword.id !== passwordId,
     )
     this.setState({passwordsList: updatedPasswordsList})
   }
@@ -86,6 +92,7 @@ class PasswordManager extends Component {
       userWebsite: '',
       userName: '',
       userPassword: '',
+      //   isTrue: true,
     }))
   }
 
@@ -107,15 +114,16 @@ class PasswordManager extends Component {
     } = this.state
     const searchResults = this.getSearchResults()
 
-    // console.log(passwordsList[0])
     return (
       <div className="app-container">
-        <div className="logo-container">
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/password-manager-logo-img.png"
-            alt="app logo"
-            className="logo-image"
-          />
+        <div className="logo-container-a">
+          <div className="logo-container">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/password-manager-logo-img.png"
+              alt="app logo"
+              className="logo-image"
+            />
+          </div>
         </div>
         <div className="extra-container">
           <div className="content-container">
@@ -129,7 +137,7 @@ class PasswordManager extends Component {
               </div>
               <form className="form" onSubmit={this.onAddUsersPasswords}>
                 <div className="form-container">
-                  <p className="description">Add New Password </p>
+                  <h4 className="description">Add New Password </h4>
                   <div className="users-inputs-forms-container">
                     <div className="each-input">
                       <img
@@ -191,7 +199,7 @@ class PasswordManager extends Component {
           <div className="password-container">
             <div className="password-search-container">
               <div className="password-text-and-count">
-                <p className="your-password">Your Password</p>
+                <h4 className="your-password">Your Passwords</h4>
                 <p className="password-count">{passwordsList.length}</p>
               </div>
               <div className="search-bar-container">
@@ -217,10 +225,19 @@ class PasswordManager extends Component {
                 onClick={this.onCheckBox}
               />
               <label htmlFor="checkboxId" className="label-text">
-                Shows Passwords
+                Show passwords
               </label>
             </div>
-            {passwordsList.length !== 0 ? (
+            {passwordsList.length === 0 || searchResults.length === 0 ? (
+              <div className="no-password-image-container">
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
+                  alt="no passwords"
+                  className="login-page-image"
+                />
+                <p className="no-password-text">No Passwords</p>
+              </div>
+            ) : (
               <ul className="passwords-lists-container">
                 {searchResults.map(eachPassword => (
                   <PasswordsLists
@@ -231,16 +248,33 @@ class PasswordManager extends Component {
                   />
                 ))}
               </ul>
-            ) : (
-              <div className="login-image-container">
-                <img
-                  src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
-                  alt="password manager"
-                  className="login-page-image"
-                />
-                <p className="no-password-text">No Passwords View</p>
-              </div>
             )}
+
+            {/* {(() => ({
+              if (passwordsList.length === 0)
+                return (
+                  <div className="no-password-image-container">
+                    <img
+                      src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
+                      alt="no passwords"
+                      className="login-page-image"
+                    />
+                    <p className="no-password-text">No Passwords</p>
+                  </div>
+                )
+              if (searchResults.length === 0)
+                return (
+                  <div className="no-password-image-container">
+                    <img
+                      src="https://assets.ccbp.in/frontend/react-js/no-passwords-img.png"
+                      alt="no passwords"
+                      className="login-page-image"
+                    />
+                    <p className="no-password-text">No Passwords</p>
+                  </div>
+                )
+              else <p>bhabSA</p>
+            })()} */}
           </div>
         </div>
       </div>
